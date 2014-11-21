@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/LeonM234/battleship/issues"
   },
-  "homepage": "https://github.com/LeonM234/battleship"
+  "homepage": "https://github.com/LeonM234/battleship",
+  "devDependencies": {
+    "bower": "^1.3.12"
+  }
 }
