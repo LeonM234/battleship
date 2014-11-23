@@ -34,3 +34,71 @@ td {
 th {
   color: white;
 }
+
+#fleet-box {
+  width: 250px;
+  height: 250px;
+  border: 1px solid blue;
+  display: inline-block;
+}
+
+#aircraft-carrier {
+  height: 140px;
+  width: 28px;
+  background-color: red;
+  margin: 0;
+  display: inline-block;
+  border-radius: 10px 10px 0 0;
+}
+
+#battleship {
+  height: 112px;
+  width: 28px;
+  background-color: red;
+  margin: 0;
+  display: inline-block;
+}
+
+#submarine {
+  height: 28px; 
+  width: 84px;
+  background-color: red;
+  margin: 0;
+  display: inline-block;
+}
+
+#destroyer {
+  height: 28px; 
+  width: 84px;
+  background-color: red;
+  margin: 0;
+  display: inline-block;
+}
+
+#patrol {
+  height: 28px; 
+  width: 56px;
+  background-color: red;
+  margin: 0;
+  display: inline-block;
+}
+
+
+
+#toggle-option {
+  display: inline-block;
+}
+
+#toggle-option p {
+    color: red;
+    font-family: battleship;
+    font-size: 0.5em;
+    display: inline;
+  }
+
+#arrow {
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  display: inline;
+}

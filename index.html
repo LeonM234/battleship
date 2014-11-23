@@ -6,7 +6,7 @@
   <title>BATTLESHIP</title>
 <body>
   <h1 id="game-title">BATTLESHiP</h1>
-  <table>
+  <table id="table1">
     <tbody>      
     <tr>
       <th>A</th>
@@ -153,5 +153,22 @@
       <th>10</th>
     </thead>
   </table>
+  
+  <div id="fleet-box">
+    <div id="aircraft-carrier"></div>
+    <div id="battleship"></div>
+    <div id="submarine"></div>
+    <div id="destroyer"></div>
+    <div id="patrol"></div>
+  </div>
+  
+<div id="toggle-option">
+  <img src="img/arrow.png" id="arrow">
+  <p>Horizontal / Vertical</p>
+</div>
+  
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/jqueryui/jquery-ui.min.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
