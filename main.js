@@ -71,6 +71,7 @@ $(function() {
 // Click a ship to select it
 $('#aircraft-carrier, #battleship, #submarine, #destroyer, #patrol').on('click', function(){
   // Highlight via adding class "selected"
+    $('#aircraft-carrier, #battleship, #submarine, #destroyer, #patrol').removeClass("selected");
     $(this).addClass("selected");
   // Click another ship and un-hilight previous one, and highlight new one
     
@@ -83,21 +84,13 @@ $('#aircraft-carrier, #battleship, #submarine, #destroyer, #patrol').on('click',
 // On clicking icon flip selected ship
 $('#arrow').on('click', function(){
   // selected ship flips between horizontal and vertical
-  
-  // for each ship, find the one with class selected
-  var ships = [$('#aircraft-carrier'), $('#battleship'), $('#submarine'), $('#destroyer'), $('#patrol')];
+  var width = $(".selected").css("width");
+  var height = $(".selected").css("height");
 
-  /*ships.forEach(){
-    console.log($(this) + " is a ship!");
-  }*/
-      // set the width of the selected ship equal to height, and height equal to width
-  
-  /*var aircraft = $('#aircraft-carrier');
+  $(".selected").css("width", height);
+  $(".selected").css("height", width);
 
-  aircraft.css({
-    "width": "140px",
-    "height": "28px"
-  });*/
+  // TO-DO: Return current Vertical/Horizontal state to the selected object
 });
 
 // Turn off ability to move once snapped in place

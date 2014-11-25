@@ -26,14 +26,12 @@ table {
 }
 
 tr {
-  overflow: hidden;
 }
 
 td {
   border: 1px solid blue;
-  height: 1.5em;
-  width: 1.5em;
-  overflow: hidden;
+  height: 25px;
+  width: 25px;
 }
 
 th {
@@ -53,6 +51,7 @@ th {
   background-color: red;
   margin: 0;
   display: inline-block;
+  border-radius: 10px;
 }
 
 #battleship {
@@ -61,6 +60,7 @@ th {
   background-color: red;
   margin: 0;
   display: inline-block;
+  border-radius: 10px;
 }
 
 #submarine {
@@ -69,6 +69,7 @@ th {
   background-color: red;
   margin: 0;
   display: inline-block;
+  border-radius: 10px;
 }
 
 #destroyer {
@@ -77,6 +78,7 @@ th {
   background-color: red;
   margin: 0;
   display: inline-block;
+  border-radius: 10px;
 }
 
 #patrol {
@@ -85,6 +87,7 @@ th {
   background-color: red;
   margin: 0;
   display: inline-block;
+  border-radius: 10px;
 }
 
 #toggle-option {
