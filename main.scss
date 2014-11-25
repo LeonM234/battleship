@@ -44,46 +44,43 @@ th {
 
 #aircraft-carrier {
   height: 140px;
-  width: 28px;
+  width: 26px;
   background-color: red;
   margin: 0;
   display: inline-block;
-  border-radius: 10px 10px 0 0;
 }
 
 #battleship {
   height: 112px;
-  width: 28px;
+  width: 26px;
   background-color: red;
   margin: 0;
   display: inline-block;
 }
 
 #submarine {
-  height: 28px; 
-  width: 84px;
+  height: 84px; 
+  width: 26px;
   background-color: red;
   margin: 0;
   display: inline-block;
 }
 
 #destroyer {
-  height: 28px; 
-  width: 84px;
+  height: 84px; 
+  width: 26px;
   background-color: red;
   margin: 0;
   display: inline-block;
 }
 
 #patrol {
-  height: 28px; 
-  width: 56px;
+  height: 56px; 
+  width: 26px;
   background-color: red;
   margin: 0;
   display: inline-block;
 }
-
-
 
 #toggle-option {
   display: inline-block;
@@ -102,3 +99,73 @@ th {
   border-radius: 10px;
   display: inline;
 }
+
+
+/* ----- CSS FOR PULSATING A SELECTED SHIP ----- */
+.selected {
+	-webkit-animation: glow 500ms ease-out infinite alternate;
+	-moz-animation: glow 500ms ease-out infinite alternate;
+	-o-animation: glow 500ms ease-out infinite alternate;
+	-ms-animation: glow 500ms ease-out infinite alternate;
+	animation: glow 500ms ease-out infinite alternate;
+	border: 1.5px solid #393;
+	box-shadow: 0 0 10px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 10px 0 #000;
+	color: #efe;
+	outline: none;
+}
+
+@-webkit-keyframes glow {
+    0% {
+		border-color: #393;
+		box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 2px 0 #000;
+    }	
+    100% {
+		border-color: #6f6;
+		box-shadow: 0 0 30px rgba(0,255,0,.6), inset 0 0 20px rgba(0,255,0,.4), 0 2px 0 #000;
+    }
+}
+
+@-moz-keyframes glow {
+    0% {
+		border-color: #393;
+		box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 2px 0 #000;
+    }	
+    100% {
+		border-color: #6f6;
+		box-shadow: 0 5px 20px rgba(0,255,0,.6), inset 0 0 10px rgba(0,255,0,.4), 0 2px 0 #000;
+    }
+}
+
+@-o-keyframes glow {
+    0% {
+		border-color: #393;
+		box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 2px 0 #000;
+    }	
+    100% {
+		border-color: #6f6;
+		box-shadow: 0 0 20px rgba(0,255,0,.6), inset 0 0 10px rgba(0,255,0,.4), 0 2px 0 #000;
+    }
+}
+
+@-ms-keyframes glow {
+    0% {
+		border-color: #393;
+		box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 2px 0 #000;
+    }	
+    100% {
+		border-color: #6f6;
+		box-shadow: 0 0 20px rgba(0,255,0,.6), inset 0 0 10px rgba(0,255,0,.4), 0 2px 0 #000;
+    }
+}
+
+@keyframes glow {
+    0% {
+		border-color: #393;
+		box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 2px 0 #000;
+    }	
+    100% {
+		border-color: #6f6;
+		box-shadow: 0 0 20px rgba(0,255,0,.6), inset 0 0 10px rgba(0,255,0,.4), 0 2px 0 #000;
+    }
+}
+
