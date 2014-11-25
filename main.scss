@@ -25,10 +25,15 @@ table {
   margin: 0 auto;
 }
 
+tr {
+  overflow: hidden;
+}
+
 td {
   border: 1px solid blue;
   height: 1.5em;
   width: 1.5em;
+  overflow: hidden;
 }
 
 th {

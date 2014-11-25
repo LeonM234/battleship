@@ -43,14 +43,15 @@ matrix.forEach(creatingRows);
     $space.droppable({
       drop: function(event, ui){
         console.log("dropped onto space");
-        var $space = $(this);
+        $space = $(this);
+        $(this).append('#aircraft-carrier');
         }
       });
 
 // ----- TABLE DROPPABLE -----
-$(function(){
+/*$(function(){
   $('#table1').droppable();
-});
+});*/
 
 // ----- SHIPS DRAGGABLE -----
 $(function() {
