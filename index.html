@@ -6,18 +6,28 @@
   <title>BATTLESHIP</title>
 <body>
   <h1 id="game-title">BATTLESHiP</h1>
+  <table id="table1">
+  </table>
  
-  <div id="fleet-box">
-    <div id="aircraft-carrier" class="ship"></div>
-    <div id="battleship" class="ship"></div>
-    <div id="submarine" class="ship"></div>
-    <div id="destroyer" class="ship"></div>
-    <div id="patrol" class="ship"></div>
-  </div>
+  <table id=#fleet-box">
+    <ul>
+      <li id="aircraft-carrier" class="ship"></li>
+      <li id="battleship" class="ship"></li>
+      <li id="submarine" class="ship"></li>
+      <li id="destroyer" class="ship"></li>
+      <li id="patrol" class="ship"></li>
+    </ul>
+  </table>
   
 <div id="toggle-option">
   <img src="img/arrow.png" id="arrow">
   <p>Horizontal / Vertical</p>
+</div>
+
+<div id="ready">
+  <p>Ships Ready!</p> 
+  <img src="img/redbutton.png" id="redbutton">
+  <p>Start Game!</p>
 </div>
   
   <script src="bower_components/jquery/dist/jquery.min.js"></script>

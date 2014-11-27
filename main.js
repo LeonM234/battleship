@@ -5,6 +5,7 @@ var ship = [
     {shipName: 'destroyer', numberofSquares: 3, hitCounter: 0, alignment: 1, matrixType: 2, destroyed: 0 },
     {shipName: 'patrol-boat', numberofSquares: 2, hitCounter: 0, alignment: 1, matrixType: 1, destroyed: 0 },]
 
+// ----- BOARD ARRAY FOR STATE OF THE GAME -----
 var matrix = [[0,0,0,0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0,0,0,0],
@@ -16,46 +17,31 @@ var matrix = [[0,0,0,0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0,0,0,0]];
 
-// ----- DRAWING THE CANVAS -----
-//grid width and height
-var bw = 500;
-var bh = 500;
-//padding around grid
-var p = 0;
-//size of canvas
-var cw = bw + (p*2);
-var ch = bh + (p*2);
-
-var canvas = $('<canvas/>').attr({width: cw, height: ch}).appendTo('body');
-
-var context = canvas.get(0).getContext("2d");
-
-function drawBoard(){
-    for (var x = 0; x <= bw; x += 50) {
-        context.moveTo(x + p, p);
-        context.lineTo(x + p, bh + p);
+// ----- CREATE THE BOARD -----
+matrix.forEach(creatingRows);
+  function creatingRows(rowValue){
+    var $table = document.querySelector('#table1');
+    var $tr = document.createElement('tr');
+    $table.appendChild($tr);
+    rowValue.forEach(function(cellValue) {
+    var $td = document.createElement('td');
+    $td.textContent = cellValue;
+    if (cellValue === 0){
+      $td.classList.add('miss');
+    } else {
+      $td.classList.add('hit');
     }
-
-
-    for (var x = 0; x <= bh; x += 50) {
-        context.moveTo(p, x + p);
-        context.lineTo(bw + p, x + p);
-    }
-
-    context.strokeStyle = "blue";
-    context.stroke();
+    $tr.appendChild($td);
+  });
 }
-
-drawBoard();
-
 
 // Dragging / Dropping Ships
 //  TO-DO: Snap items into place
 
 // ----- TABLE TD'S DROPPABLE -----
-    var $canvas = $("canvas");
+    var $tds = $("td");
     
-    $canvas.droppable({
+    $tds.droppable({
       drop: function(event, ui){
         console.log("dropped onto space");
         }

@@ -1,10 +1,17 @@
+@mixin shipscss {
+  background-color: red;
+  margin: 0;
+  display: inline-block;
+  border-radius: 10px;
+}
+
 @font-face {
   font-family: battleship;
   src: url(guardiane.ttf);
 }
 
 body {
-  background-color: white;
+  background-color: rgb(30, 30, 30);
 }
 
 #game-title {    
@@ -21,8 +28,21 @@ body {
   width: 100%
 }
 
-canvas {
+table {
+  margin: 0 auto;
+}
+
+tr {
+}
+
+td {
   border: 1px solid blue;
+  height: 45px;
+  width: 45px;
+}
+
+th {
+  color: white;
 }
 
 #fleet-box {
@@ -30,15 +50,18 @@ canvas {
   height: 250px;
   border: 1px solid blue;
   display: inline-block;
+  margin: 0;
+}
+
+#fleet-box ul {
+  margin: 0;
+  display: inline-block;
 }
 
 #aircraft-carrier {
   height: 225px;
   width: 25px;
-  background-color: red;
-  margin: 0;
-  display: inline-block;
-  border-radius: 10px;
+  @include shipscss;
 }
 
 #battleship {
@@ -84,7 +107,7 @@ canvas {
 #toggle-option p {
     color: red;
     font-family: battleship;
-    font-size: 0.5em;
+    font-size: 0.8em;
     display: inline;
   }
 
@@ -93,6 +116,25 @@ canvas {
   width: 20px;
   border-radius: 10px;
   display: inline;
+}
+
+#ready {
+  float: right;
+}
+
+#ready img {
+  height: 40px;
+  width: 40px;
+  display: block;
+  margin: 0px 0px 5px 40px;
+}
+
+#ready p {
+  color: red;
+  font-family: battleship;
+  font-size: 0.8em;
+  display: block;
+  margin: 5px 0 5px 0;
 }
 
 
