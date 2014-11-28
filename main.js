@@ -1,3 +1,5 @@
+// ----- GLOBAL VARIABLES -----
+
 var ship = [
     {shipName: 'aircraft-carrier', numberofSquares: 5, hitCounter: 0, alignment: 1, matrixType: 5, destroyed: 0},
     {shipName: 'battleship', numberofSquares: 4, hitCounter: 0, alignment: 1, matrixType: 4, destroyed: 0 },
@@ -35,27 +37,21 @@ matrix.forEach(creatingRows);
   });
 }
 
-// Dragging / Dropping Ships
-//  TO-DO: Snap items into place
-
 // ----- TABLE TD'S DROPPABLE -----
-    var $tds = $("td");
+var $tds = $("td");
     
-    $tds.droppable({
-      drop: function(event, ui){
-        console.log("dropped onto space");
-        }
-      });
+$tds.droppable({
+  drop: function(event, ui){
+  console.log("dropped onto space");
+  }
+});
 
-// ----- TABLE DROPPABLE -----
-/*$(function(){
-  $('#table1').droppable();
-});*/
-
-// ----- SHIPS DRAGGABLE -----
+// ----- SHIPS DRAGGABLE + SNAP + REVERT -----
 $(function() {
   $('#aircraft-carrier, #battleship, #submarine, #destroyer, #patrol').draggable({
     // If dropped outside of table, revert to fleet-box
+    grid: [50, 50],
+    snap: 'td',
     revert: function(event, ui){
       $(this).data("ui-draggable").originalPosition = {
         top: 0,
@@ -72,27 +68,29 @@ $('#aircraft-carrier, #battleship, #submarine, #destroyer, #patrol').on('click',
   // Highlight via adding class "selected"
     $('#aircraft-carrier, #battleship, #submarine, #destroyer, #patrol').removeClass("selected");
     $(this).addClass("selected");
-  // Click another ship and un-hilight previous one, and highlight new one
-    
 });
-//    Pass selected ship into a variable to hold
-//    Use selected to determine which ship to flip if icon clicked
-//
 
 // ----- FLIP SHIPS HORIZ/VERT -----
-// On clicking icon flip selected ship
 $('#arrow').on('click', function(){
-  // selected ship flips between horizontal and vertical
   var width = $(".selected").css("width");
   var height = $(".selected").css("height");
 
+  // selected ship flips between horizontal and vertical
   $(".selected").css("width", height);
   $(".selected").css("height", width);
 
-  // TO-DO: Return current Vertical/Horizontal state to the selected object
+  // change horizontal/vertical class
+  if (width > height){
+    $(".selected").removeClass("vertical");
+    $(".selected").addClass("horizontal");
+  } else {
+    $(".selected").removeClass("horizontal");
+    $(".selected").addClass("vertical");
+  }
 });
 
-// Turn off ability to move once snapped in place
-// or after you click "Board Is Set"?
+
+//TODO: Turn off ability to move after you click "Board Is Set"
+//TODO: Add tolernace (touch I think) to ships
 
 

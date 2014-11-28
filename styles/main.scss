@@ -30,9 +30,7 @@ body {
 
 table {
   margin: 0 auto;
-}
-
-tr {
+  clear: both;
 }
 
 td {
@@ -45,96 +43,76 @@ th {
   color: white;
 }
 
-#fleet-box {
-  width: 250px;
-  height: 250px;
-  border: 1px solid blue;
-  display: inline-block;
-  margin: 0;
-}
-
-#fleet-box ul {
-  margin: 0;
-  display: inline-block;
-}
-
 #aircraft-carrier {
-  height: 225px;
-  width: 25px;
+  height: 25px;
+  width: 225px;
   @include shipscss;
 }
 
 #battleship {
-  height: 180px;
-  width: 25px;
-  background-color: red;
-  margin: 0;
-  display: inline-block;
-  border-radius: 10px;
+  height: 25px;
+  width: 180px;
+  @include shipscss;
 }
 
 #submarine {
-  height: 135px; 
-  width: 25px;
-  background-color: red;
-  margin: 0;
-  display: inline-block;
-  border-radius: 10px;
+  height: 25px; 
+  width: 135px;
+  @include shipscss;
 }
 
 #destroyer {
-  height: 135px; 
-  width: 25px;
-  background-color: red;
-  margin: 0;
-  display: inline-block;
-  border-radius: 10px;
+  height: 25px; 
+  width: 135px;
+  @include shipscss;
 }
 
 #patrol {
-  height: 90px; 
-  width: 25px;
-  background-color: red;
+  height: 25px; 
+  width: 90px;
+  @include shipscss;
+}
+
+#fleet-box {
   margin: 0;
   display: inline-block;
-  border-radius: 10px;
+    li {
+      list-style: none;
+    }
 }
 
 #toggle-option {
-  display: inline-block;
+  display: block;
+    p {
+      color: red;
+      font-family: battleship;
+      font-size: 0.8em;
+      display: inline;
+    }
 }
-
-#toggle-option p {
-    color: red;
-    font-family: battleship;
-    font-size: 0.8em;
-    display: inline;
-  }
 
 #arrow {
   height: 20px;
   width: 20px;
   border-radius: 10px;
-  display: inline;
+  display: inline-block;
 }
 
 #ready {
   float: right;
-}
-
-#ready img {
-  height: 40px;
-  width: 40px;
-  display: block;
-  margin: 0px 0px 5px 40px;
-}
-
-#ready p {
-  color: red;
-  font-family: battleship;
-  font-size: 0.8em;
-  display: block;
-  margin: 5px 0 5px 0;
+    img {
+      height: 40px;
+      width: 40px;
+      display: inline;
+      margin: 0px 0px 5px 40px;
+    }
+    p {
+      color: red;
+      font-family: battleship;
+      font-size: 0.8em;
+      display: block;
+      margin: 5px 0 5px 0;
+    }
 }
 
 
