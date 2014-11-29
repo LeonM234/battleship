@@ -2,10 +2,45 @@
 
 (function () {
   'use strict';
+
+  beforeEach(function(){
+    var enemyTargetX = '';
+    var enemyTargetY = '';
+  });
 //Begin Mocha Tests//
+//Next Test Series//
+  describe('Miss Test Series', function(){
+    describe('Is target(x,y) a hit or miss?', function(){
+        it('Targeted (9,9) should be a miss', function () {
+          var enemyTargetX = 9;
+          var enemyTargetY = 9;
+          assert.deepEqual(hitOrMiss(enemyTargetX, enemyTargetY), 'You missed!');
+      });
+    });
+  });
 
 //Next Test Series//
   describe('Displaying the Matrix', function(){
+    describe('Is target(x,y) a hit or miss?', function(){
+        it('Targeted (0,3) should be a hit', function () {
+          var enemyTargetX = 0;
+          var enemyTargetY = 3;
+          assert.deepEqual(hitOrMiss(enemyTargetX, enemyTargetY), 'Hit!');
+      });
+    });
+    describe('What is inside enemyTargeted x and y value on the matrix?', function(){
+        it('Targeted (0,3) should be 5', function () {
+          var enemyTargetX = 0;
+          var enemyTargetY = 3;
+          assert.deepEqual(whatinLocation(enemyTargetX, enemyTargetY), 5);
+      });
+    });
+    describe('What is in matrix (0,0)?', function(){
+        it('Should display 5', function () {
+          assert.deepEqual(insideMatrix(testMatrix), 5);
+      });
+    });
+
     describe('display initial matrix', function(){
         it('matrix is the exact same thing as result', function () {
           var result = [[0,0,0,0,0,0,0,0,0,0],
@@ -51,6 +86,5 @@
       });
     });
   });
-
 //End of initial Anonymous Function//
 })();
