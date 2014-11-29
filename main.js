@@ -42,7 +42,12 @@ var $tds = $("td");
     
 $tds.droppable({
   drop: function(event, ui){
-  console.log("dropped onto space");
+    greedy: true,
+    // add class of dropped ship to dropped TD
+    $(this).addClass($('.selected').attr('id'));
+  },
+  out: function(event, ui){
+    $(this).removeClass($('.selected').attr('id'));
   }
 });
 
@@ -52,6 +57,7 @@ $(function() {
     // If dropped outside of table, revert to fleet-box
     grid: [50, 50],
     snap: 'td',
+    tolerance: 'pointer',
     revert: function(event, ui){
       $(this).data("ui-draggable").originalPosition = {
         top: 0,
@@ -92,5 +98,6 @@ $('#arrow').on('click', function(){
 
 //TODO: Turn off ability to move after you click "Board Is Set"
 //TODO: Add tolernace (touch I think) to ships
+//TODO: For some reason #patrol isn't switching horiz/vert classes like the others...not sure why.  Fix this.
 
 
