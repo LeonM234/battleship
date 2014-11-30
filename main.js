@@ -58,6 +58,7 @@ $(function() {
     grid: [50, 50],
     snap: 'td',
     tolerance: 'pointer',
+    handle: '#grabber',
     revert: function(event, ui){
       $(this).data("ui-draggable").originalPosition = {
         top: 0,
@@ -95,9 +96,44 @@ $('#arrow').on('click', function(){
   }
 });
 
+// ----- GAME START LOCK IN STATE OF THE BOARD -----
+$('#ready').on('click', function(){
+  $tableRow = $('#table1 tr');
+  $tableRow.each(function(){
+    $(this).find('td').each(function(){
+      if ($(this).hasClass("aircraft-carrier") || $(this).hasClass("battleship") ||
+          $(this).hasClass("submarine") || $(this).hasClass("destroyer") ||
+          $(this).hasClass("patrol") === true){
+        console.log("yes");
+        var matrixX = (9 - ($(this).nextAll('td').length));
+        console.log("This is matrixX " + matrixX);
+        var matrixY = ($(this).parent()).prevAll('tr').length;
+        console.log("This is matrixY " + matrixY);
+        
+        if ($(this).hasClass("aircraft-carrier")){ 
+          matrix[matrixY].splice(matrixX, 1, 5);
+        } else if ($(this).hasClass("battleship")){
+          matrix[matrixY].splice(matrixX, 1, 4);
+        } else if ($(this).hasClass("submarine")){
+          matrix[matrixY].splice(matrixX, 1, 3);
+        } else if ($(this).hasClass("destroyer")){
+          matrix[matrixY].splice(matrixX, 1, 2);
+        } else if ($(this).hasClass("patrol")){
+          matrix[matrixY].splice(matrixX, 1, 1);
+        }
+      } else {
+        console.log("no");
+      }
+    });
+  });
+});
 
+//TODO: Ensure you can only drag/drop from the little blue span
+//TODO: Populate surrounding TD's after dropping
+//TODO: Connect Dropped Ship to Matrix
 //TODO: Turn off ability to move after you click "Board Is Set"
 //TODO: Add tolernace (touch I think) to ships
 //TODO: For some reason #patrol isn't switching horiz/vert classes like the others...not sure why.  Fix this.
+//TODO: Would probably be a good exercise to re-factor and minimize the GAME START function
 
 
