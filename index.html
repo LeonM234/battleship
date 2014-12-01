@@ -2,6 +2,7 @@
 <html>
 <head>
 </head>
+  <script src="bower_components/firebase/firebase.js"></script>
   <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
   <link rel="stylesheet" href="styles/main.css">
   <title>BATTLESHIP</title>
@@ -15,10 +16,10 @@
 
   <ul id="fleet-box">
     <li><div id="aircraft-carrier" class="ship horizontal"><span id="grabber"></span></div></li>
-    <li><div id="battleship" class="ship horizontal"></div></li>
-    <li><div id="submarine" class="ship horizontal"></div></li>
-    <li><div id="destroyer" class="ship horizontal"></div></li>
-    <li><div id="patrol" class="ship horizontal"></div></li>
+    <li><div id="battleship" class="ship horizontal"><span id="grabber"></span></div></li>
+    <li><div id="submarine" class="ship horizontal"><span id="grabber"></span></div></li>
+    <li><div id="destroyer" class="ship horizontal"><span id="grabber"></span></div></li>
+    <li><div id="patrol" class="ship horizontal"><span id="grabber"></span></div></li>
   </ul>
   
   <div id="ready">

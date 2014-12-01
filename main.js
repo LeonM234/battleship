@@ -1,23 +1,24 @@
 // ----- GLOBAL VARIABLES -----
+var $ships =  $('#aircraft-carrier, #battleship, #submarine, #destroyer, #patrol');
 
 var ship = [
-    {shipName: 'aircraft-carrier', numberofSquares: 5, hitCounter: 0, alignment: 1, matrixType: 5, destroyed: 0},
-    {shipName: 'battleship', numberofSquares: 4, hitCounter: 0, alignment: 1, matrixType: 4, destroyed: 0 },
-    {shipName: 'submarine', numberofSquares: 3, hitCounter: 0, alignment: 1, matrixType: 3, destroyed: 0 },
-    {shipName: 'destroyer', numberofSquares: 3, hitCounter: 0, alignment: 1, matrixType: 2, destroyed: 0 },
-    {shipName: 'patrol-boat', numberofSquares: 2, hitCounter: 0, alignment: 1, matrixType: 1, destroyed: 0 },]
-
+    {shipName: 'aircraft-carrier', numberofSquares: 5, hitCounter: 0, alignment: 1, indexType: 0, destroyed: 0},
+    {shipName: 'battleship', numberofSquares: 4, hitCounter: 0, alignment: 1, indexType: 1, destroyed: 0 },
+    {shipName: 'submarine', numberofSquares: 3, hitCounter: 0, alignment: 1, indexType: 2, destroyed: 0 },
+    {shipName: 'destroyer', numberofSquares: 3, hitCounter: 0, alignment: 1, indexType: 3, destroyed: 0 },
+    {shipName: 'patrol-boat', numberofSquares: 2, hitCounter: 0, alignment: 1, indexType: 4, destroyed: 0 },]
+    
 // ----- BOARD ARRAY FOR STATE OF THE GAME -----
-var matrix = [[0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0,0]];
+var matrix = [[9,9,9,9,9,9,9,9,9,9],
+              [9,9,9,9,9,9,9,9,9,9],
+              [9,9,9,9,9,9,9,9,9,9],
+              [9,9,9,9,9,9,9,9,9,9],
+              [9,9,9,9,9,9,9,9,9,9],
+              [9,9,9,9,9,9,9,9,9,9],
+              [9,9,9,9,9,9,9,9,9,9],
+              [9,9,9,9,9,9,9,9,9,9],
+              [9,9,9,9,9,9,9,9,9,9],
+              [9,9,9,9,9,9,9,9,9,9]];
 
 // ----- CREATE THE BOARD -----
 matrix.forEach(creatingRows);
@@ -28,7 +29,7 @@ matrix.forEach(creatingRows);
     rowValue.forEach(function(cellValue) {
     var $td = document.createElement('td');
     $td.textContent = cellValue;
-    if (cellValue === 0){
+    if (cellValue === 9){
       $td.classList.add('miss');
     } else {
       $td.classList.add('hit');
@@ -38,13 +39,19 @@ matrix.forEach(creatingRows);
 }
 
 // ----- TABLE TD'S DROPPABLE -----
-var $tds = $("td");
-    
+var $tds = $("td");    
 $tds.droppable({
+  tolerance: 'pointer',
   drop: function(event, ui){
     greedy: true,
-    // add class of dropped ship to dropped TD
+    // add class of dropped ship to dropped TD + populate surroundind TDs
     $(this).addClass($('.selected').attr('id'));
+    if ($('.selected').hasClass("horizontal") === true){ 
+      // start at 'this'
+      $(this)
+      // move horizontally to the right # of numberSquares
+      // populate each with same stuff as above "if" statement
+    }
   },
   out: function(event, ui){
     $(this).removeClass($('.selected').attr('id'));
@@ -53,11 +60,10 @@ $tds.droppable({
 
 // ----- SHIPS DRAGGABLE + SNAP + REVERT -----
 $(function() {
-  $('#aircraft-carrier, #battleship, #submarine, #destroyer, #patrol').draggable({
+  $ships.draggable({
     // If dropped outside of table, revert to fleet-box
     grid: [50, 50],
     snap: 'td',
-    tolerance: 'pointer',
     handle: '#grabber',
     revert: function(event, ui){
       $(this).data("ui-draggable").originalPosition = {
@@ -70,10 +76,8 @@ $(function() {
 });
 
 // ----- SELECT SHIP W/ CLICK -----
-// Click a ship to select it
-$('#aircraft-carrier, #battleship, #submarine, #destroyer, #patrol').on('click', function(){
-  // Highlight via adding class "selected"
-    $('#aircraft-carrier, #battleship, #submarine, #destroyer, #patrol').removeClass("selected");
+$ships.on('mousedown', function(){
+    $ships.removeClass("selected");
     $(this).addClass("selected");
 });
 
@@ -111,15 +115,15 @@ $('#ready').on('click', function(){
         console.log("This is matrixY " + matrixY);
         
         if ($(this).hasClass("aircraft-carrier")){ 
-          matrix[matrixY].splice(matrixX, 1, 5);
+          matrix[matrixY].splice(matrixX, 5, 0, 0, 0, 0, 0);
         } else if ($(this).hasClass("battleship")){
-          matrix[matrixY].splice(matrixX, 1, 4);
+          matrix[matrixY].splice(matrixX, 4, 1, 1, 1, 1);
         } else if ($(this).hasClass("submarine")){
-          matrix[matrixY].splice(matrixX, 1, 3);
+          matrix[matrixY].splice(matrixX, 3, 2, 2, 2);
         } else if ($(this).hasClass("destroyer")){
-          matrix[matrixY].splice(matrixX, 1, 2);
+          matrix[matrixY].splice(matrixX, 3, 3, 3, 3);
         } else if ($(this).hasClass("patrol")){
-          matrix[matrixY].splice(matrixX, 1, 1);
+          matrix[matrixY].splice(matrixX, 2, 4, 4);
         }
       } else {
         console.log("no");
@@ -128,7 +132,14 @@ $('#ready').on('click', function(){
   });
 });
 
-//TODO: Ensure you can only drag/drop from the little blue span
+// ----- FIREBASE COMMUNICATION -----
+var myDataRef = new Firebase('https://lsbattleship.firebaseio.com/');
+
+myDataRef.push({name: "Leon1234"});
+myDataRef.on('child_added', function(snapshot){
+  alert(snapshot);
+});
+
 //TODO: Populate surrounding TD's after dropping
 //TODO: Connect Dropped Ship to Matrix
 //TODO: Turn off ability to move after you click "Board Is Set"
