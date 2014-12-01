@@ -10,6 +10,43 @@
   // });
 
 //Begin Mocha Tests//
+describe('EndGame Test Series', function(){
+  describe('When all ships are destroyed', function(){
+      it('Should give a next turn message', function () {
+        var enemyTargetValue = testMatrix[0][0] //aircraft carrier death//
+        hitIncrease(enemyTargetValue);
+        var enemyTargetValue = testMatrix[0][1]
+        hitIncrease(enemyTargetValue);
+        var enemyTargetValue = testMatrix[0][2]
+        hitIncrease(enemyTargetValue);
+        var enemyTargetValue = testMatrix[0][4]
+        hitIncrease(enemyTargetValue);
+
+        var enemyTargetValue = testMatrix[5][9] //battleship's death//
+        hitIncrease(enemyTargetValue);
+        var enemyTargetValue = testMatrix[6][9]
+        hitIncrease(enemyTargetValue);
+        var enemyTargetValue = testMatrix[7][9]
+        hitIncrease(enemyTargetValue);
+        var enemyTargetValue = testMatrix[8][9]
+        hitIncrease(enemyTargetValue);
+
+        var enemyTargetValue = testMatrix[5][0] //destroyer's death//
+        hitIncrease(enemyTargetValue);
+        var enemyTargetValue = testMatrix[5][1]
+        hitIncrease(enemyTargetValue);
+        var enemyTargetValue = testMatrix[5][2]
+        hitIncrease(enemyTargetValue);
+
+        assert.strictEqual(endGameSequence(), "Game Over. You sunk all the battleships!");
+    });
+  });
+  describe('When 2 ships are destroyed (as per previous tests with sub and patrol boat)', function(){
+      it('Should give a next turn message', function () {
+        assert.strictEqual(endGameSequence(), 'Enemy Turn');
+    });
+  });
+});
 //Next Test Series//
     describe('Hit Test Series', function(){
       describe('What happens when you hit the patrol boat 3x rather than the allotted 2 times?', function(){
@@ -56,23 +93,23 @@
             var enemyTargetX = 9;
             var enemyTargetY = 9;
             var enemyTargetValue = testMatrix[enemyTargetX][enemyTargetY]
-            assert.deepEqual(whatEnemyHit(enemyTargetValue), 'You missed!');
+            assert.deepEqual(hitOrMiss(enemyTargetValue), 'You missed!');
         });
       });
-      describe('What is the name of the ship you hit at (9,0)?', function(){
+      xdescribe('What is the name of the ship you hit at (9,0)?', function(){
           it('Targeted (0,3) is a hit to the submarine', function () {
             var enemyTargetX = 9;
             var enemyTargetY = 0;
             var enemyTargetValue = testMatrix[enemyTargetX][enemyTargetY]
-            assert.deepEqual(whatEnemyHit(enemyTargetValue), 'patrol-boat');
+            assert.deepEqual(hitOrMiss(enemyTargetValue), 'patrol-boat');
         });
       });
-      describe('What is the name of the ship you hit at (0,3)?', function(){
+      xdescribe('What is the name of the ship you hit at (0,3)?', function(){
           it('Targeted (0,3) is a hit to the aircraft carrier', function () {
             var enemyTargetX = 0;
             var enemyTargetY = 3;
             var enemyTargetValue = testMatrix[enemyTargetX][enemyTargetY]
-            assert.deepEqual(whatEnemyHit(enemyTargetValue), 'aircraft-carrier');
+            assert.deepEqual(hitOrMiss(enemyTargetValue), 'aircraft-carrier');
         });
       });
     });

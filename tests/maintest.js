@@ -16,14 +16,30 @@ var testMatrix = [[0,0,0,0,0,9,9,9,9,9],
               [9,9,9,9,9,9,9,9,9,1],
               [4,4,9,9,9,9,9,9,9,9]];
 
-function whatEnemyHit(enemyTargetValue){
-  hitOrMiss(enemyTargetValue);
+
+// $(document).ready(function() {
+//   var enemyTargetValue = testMatrix[enemyTargetX][enemyTargetY]
+//   testMatrix[enemyTargetX][enemyTargetY] = 9;
+//
+//   hitOrMiss(enemyTargetValue);
+//   hitIncrease(enemyTargetValue);
+//   endGameSequence();
+// });
+
+//Need a click handler to get enemyTargetX and EnemyTargetY
+
+function whatinLocation(enemyTargetX, enemyTargetY){
+  var enemyTargetValue = testMatrix[enemyTargetX][enemyTargetY]
+  testMatrix[enemyTargetX][enemyTargetY] = 9;
+  return enemyTargetValue;
+};
+
+function hitOrMiss(enemyTargetValue){
   if (enemyTargetValue === 9){
         return ("You missed!");
       }
   else {
-    name = ship[enemyTargetValue].shipName;
-    return name;
+    return ("Hit!");
   }
 }
 
@@ -36,24 +52,21 @@ function hitIncrease(enemyTargetValue){
   return hitCounter;
 }
 
-function hitOrMiss(enemyTargetValue){
-  if (enemyTargetValue === 9){
-    return ('You missed!');
+function endGameSequence(){
+  if (ship[0].destroyed === 1 &&
+      ship[1].destroyed === 1 &&
+      ship[2].destroyed === 1 &&
+      ship[3].destroyed === 1 &&
+      ship[4].destroyed === 1){
+        return ("Game Over. You sunk all the battleships!");
   } else {
-    return ('Hit!');
+      return ("Enemy Turn");
   }
-};
-
-function whatinLocation(enemyTargetX, enemyTargetY){
-  var enemyTargetValue = testMatrix[enemyTargetX][enemyTargetY]
-  testMatrix[enemyTargetX][enemyTargetY] = 9;
-  return enemyTargetValue;
-};
+}
 
 function insideMatrix(testMatrix){
   return testMatrix[0][0];
 };
-
 
 function matrix(){
   var matrix = [[0,0,0,0,0,0,0,0,0,0],
